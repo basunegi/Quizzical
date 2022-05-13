@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Intropage from './components/Intropage'
+import QuestionsPage from './components/QuestionsPage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+
+	const [isGameOn, setIsGameOn] = React.useState(false)
+
+	function handleStart(shouldStart) {
+		setIsGameOn(shouldStart)
+	}
+	
+	return (
+		<div>
+			{!isGameOn && <Intropage handleStart={() => handleStart(true)}/>},
+			{isGameOn && <QuestionsPage handleStart={() => handleStart(false)}/>}
+		</div>
+	)
 }
-
-export default App;
