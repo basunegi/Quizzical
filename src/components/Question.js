@@ -13,11 +13,16 @@ export default function Question(props) {
 		return createOption(option)
 	}))
 
+	// React.useEffect(() => {
+	// 	setOptions()
+	// },[props.isComplete])
+
 	function createOption(value) {
 		return {
 			"value": value,
 			"id": nanoid(),
-			"isHeld": false
+			"isHeld": false,
+			"isCorrect": value === props.question.correct_answer
 		}
 	}
 
@@ -26,6 +31,8 @@ export default function Question(props) {
 					key={nanoid()} 
 					value={option.value} 
 					isHeld={option.isHeld}
+					isCorrect = {option.isCorrect}
+					isComplete={props.isComplete}
 					optionClicked={() => optionClicked(option.id)}
 				/>
 	})
@@ -48,7 +55,7 @@ export default function Question(props) {
 			}
 		}))
 
-		props.handleChange(props.question.id)
+		props.handleChange(props.question.qid)
 	}
 	
 	return (

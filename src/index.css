@@ -174,3 +174,20 @@ main {
     color: #F5F7FB;
     background-color: #94D7A2;
 }
+
+.option-wrong {
+    min-width: 40px;   
+    margin: 0px 10px;
+    border: 0.771045px solid #4D5B9E;
+    border-radius: 7.71045px;
+    padding: 5px 10px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10.24px;
+    line-height: 12px;
+    text-align: center;
+    color: #F5F7FB;
+    background-color: #F8BCBC;
+}

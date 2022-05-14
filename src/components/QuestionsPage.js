@@ -10,22 +10,23 @@ export default function QuestionsPage(props) {
 	const [isComplete, setIsComplete] = React.useState(false)
 
 	React.useEffect(() => {
-		fetch("https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple")
+		fetch("https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple")
 		.then(res => res.json())
 		.then(data => setQuestions(data.results.map(item => {
 			return {
 				...item,
-				"id": nanoid(),
-				"isAttempted":false
+				"qid": nanoid(),
+				"isAttempted": false
 			}
 		})))
 	 }, [])
 
 	const questionElements = questions.map(question => {
 		return <Question 
-			key={question.id} 
+			key={question.qid} 
 			question={question} 
 			handleChange={handleChange}
+			isComplete={isComplete}
 		/>
 	})
 
@@ -33,11 +34,11 @@ export default function QuestionsPage(props) {
 		setIsComplete(questions.every(question => question.isAttempted))
 	}
 
-	function handleChange(id) {
+	function handleChange(qid) {
 		setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
 			return {
 				...prevQuestion,
-				"isAttempted": id === prevQuestion.id ? 
+				"isAttempted": qid === prevQuestion.qid ? 
 					!prevQuestion.isAttempted : 
 					prevQuestion.isAttempted
 			} 
