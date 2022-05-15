@@ -12,9 +12,9 @@ export default function Intropage(props) {
 				<h1>Quizzical</h1>
 				<h4>Created by Vijaypal Singh Negi</h4>
 
-				<button className="start" onClick={event => props.handleStart(event, true)}>Start quiz</button>
+				<button className="start" onClick={event => props.handleStart(event, true, false)}>Start quiz</button>
 
-				<select className="category" onChange={event => props.handleStart(event, false)}>
+				<select className="category" onChange={event => props.handleStart(event, false, false)}>
 					<option value = "select">--Select category--</option>
 					<option value="art">Art</option>
 					<option value="geography">Geography</option>

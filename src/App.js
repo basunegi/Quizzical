@@ -6,12 +6,12 @@ export default function App() {
 
 	const [appState, setAppState] = React.useState({"isGameOn": false, "category": "select"})
 
-	function handleStart(event, shouldStart) {
+	function handleStart(event, shouldStart, shouldReset) {
 		const category = event.target.value
 		setAppState(prevAppState => {
 			return {
-				"isGameOn": appState.category !== "select"? shouldStart: false,
-				"category": event.type === "click" ? appState.category : category
+				"isGameOn": shouldReset ? false : (appState.category !== "select"? shouldStart: false),
+				"category": shouldReset ? "select" : (event.type === "click" ? appState.category : category)
 			}
 		})
 	}
@@ -19,7 +19,7 @@ export default function App() {
 	return (
 		<div>
 			{!appState.isGameOn && <Intropage handleStart={handleStart}/>},
-			{appState.isGameOn && <QuestionsPage category = {appState.category} handleStart={(event) => handleStart(event, false)}/>}
+			{appState.isGameOn && <QuestionsPage category = {appState.category} handleStart={(event) => handleStart(event, false, true)}/>}
 		</div>
 	)
 }
