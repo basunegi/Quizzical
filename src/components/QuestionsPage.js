@@ -10,13 +10,14 @@ export default function QuestionsPage(props) {
 	const [isComplete, setIsComplete] = React.useState(false)
 
 	React.useEffect(() => {
-		fetch("https://opentdb.com/api.php?amount=3&category=17&difficulty=easy&type=multiple")
+		fetch("https://opentdb.com/api.php?amount=7&category=10&difficulty=easy&type=multiple")
 		.then(res => res.json())
 		.then(data => setQuestions(data.results.map(item => {
 			return {
 				...item,
 				"qid": nanoid(),
-				"isAttempted": false
+				"isAttempted": false,
+				"isCorrect": false
 			}
 		})))
 	 }, [])
@@ -34,13 +35,12 @@ export default function QuestionsPage(props) {
 		setIsComplete(questions.every(question => question.isAttempted))
 	}
 
-	function handleChange(qid) {
+	function handleChange(qid, isAttempted, isCorrectAttempt) {
 		setQuestions(prevQuestions => prevQuestions.map(prevQuestion => {
 			return {
 				...prevQuestion,
-				"isAttempted": qid === prevQuestion.qid ? 
-					!prevQuestion.isAttempted : 
-					prevQuestion.isAttempted
+				"isAttempted": qid === prevQuestion.qid? isAttempted: prevQuestion.isAttempted,
+				"isCorrect": qid === prevQuestion.qid? isCorrectAttempt: prevQuestion.isCorrect,
 			} 
 		}))
 	}
@@ -59,12 +59,22 @@ export default function QuestionsPage(props) {
 					Check Answers
 				</button>}
 
-				{isComplete && <button 
-					className="check-answers"
-					onClick={props.handleStart}
-				>
-					Play Again
-				</button>}
+				{isComplete && <div className="footer">
+					<div className="result">
+						You scored {
+							questions.filter(question => question.isCorrect).length
+						}/{
+							questions.length
+						} correct answers!
+					</div>
+
+					<button 
+						className="play-again"
+						onClick={props.handleStart}
+					>
+						Play Again
+					</button>
+				</div>}
 
 			</div>
 

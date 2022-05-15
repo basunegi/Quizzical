@@ -13,9 +13,11 @@ export default function Question(props) {
 		return createOption(option)
 	}))
 
-	// React.useEffect(() => {
-	// 	setOptions()
-	// },[props.isComplete])
+	React.useEffect(() => {
+		const isCorrectAttempt = options.some(option => option.isHeld && option.isCorrect)
+		const isAttempted = options.some(option => option.isHeld)
+		props.handleChange(props.question.qid, isAttempted, isCorrectAttempt)
+	},[options])
 
 	function createOption(value) {
 		return {
@@ -48,6 +50,7 @@ export default function Question(props) {
 	} 
 
 	function optionClicked(id) {
+
 		setOptions(prevOptions => prevOptions.map(prevOption => {
 			return {
 				...prevOption,
@@ -55,9 +58,8 @@ export default function Question(props) {
 			}
 		}))
 
-		props.handleChange(props.question.qid)
 	}
-	
+
 	return (
 		<div className="question">
 			<p>{props.question.question}</p>

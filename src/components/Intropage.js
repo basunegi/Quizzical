@@ -6,7 +6,7 @@ export default function Intropage(props) {
 
 	return (
 		<main>
-			<img src={blobTop} className = "blob-top" alt="blobTop"/>
+			<img src={blobTop} className = "blob-top" alt="blobTop"/>			
 
 			<div className="quizzical">
 				<h1>Quizzical</h1>
