@@ -39,6 +39,19 @@ main {
     color: #293264;
 }
 
+.category {
+    margin: 50px auto;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12.8px;
+    line-height: 15px;
+    text-align: center;
+
+    color: #293264;
+}
+
 .start {
     width: 193px;
     height: 52px;

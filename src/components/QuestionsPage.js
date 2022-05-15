@@ -8,9 +8,16 @@ export default function QuestionsPage(props) {
 
 	const [questions, setQuestions] = React.useState([])
 	const [isComplete, setIsComplete] = React.useState(false)
+	const url = {
+		"art": "https://opentdb.com/api.php?amount=7&category=25&difficulty=easy&type=multiple",
+		"politics": "https://opentdb.com/api.php?amount=7&category=24&difficulty=easy&type=multiple",
+		"geography": "https://opentdb.com/api.php?amount=7&category=22&difficulty=easy&type=multiple",
+		"history": "https://opentdb.com/api.php?amount=7&category=23&difficulty=easy&type=multiple",
+		"sports": "https://opentdb.com/api.php?amount=7&category=21&difficulty=easy&type=multiple"
+	}
 
 	React.useEffect(() => {
-		fetch("https://opentdb.com/api.php?amount=7&category=10&difficulty=easy&type=multiple")
+		fetch(url[props.category])
 		.then(res => res.json())
 		.then(data => setQuestions(data.results.map(item => {
 			return {
