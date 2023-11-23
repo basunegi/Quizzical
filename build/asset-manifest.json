@@ -1,7 +1,7 @@
 {
   "main.css": "/quizzical/static/css/main.c914737b.chunk.css",
-  "main.js": "/quizzical/static/js/main.d71630bf.chunk.js",
-  "main.js.map": "/quizzical/static/js/main.d71630bf.chunk.js.map",
+  "main.js": "/quizzical/static/js/main.b91b3c10.chunk.js",
+  "main.js.map": "/quizzical/static/js/main.b91b3c10.chunk.js.map",
   "static/js/1.07ff897d.chunk.js": "/quizzical/static/js/1.07ff897d.chunk.js",
   "static/js/1.07ff897d.chunk.js.map": "/quizzical/static/js/1.07ff897d.chunk.js.map",
   "runtime~main.js": "/quizzical/static/js/runtime~main.10828be3.js",
@@ -10,6 +10,6 @@
   "static/media/blobBottom.svg": "/quizzical/static/media/blobBottom.cce06133.svg",
   "static/css/main.c914737b.chunk.css.map": "/quizzical/static/css/main.c914737b.chunk.css.map",
   "index.html": "/quizzical/index.html",
-  "precache-manifest.782ff4c1f3b22d3c624a6d2f1612148b.js": "/quizzical/precache-manifest.782ff4c1f3b22d3c624a6d2f1612148b.js",
+  "precache-manifest.132095efd7a916e26b40f842002afce6.js": "/quizzical/precache-manifest.132095efd7a916e26b40f842002afce6.js",
   "service-worker.js": "/quizzical/service-worker.js"
 }

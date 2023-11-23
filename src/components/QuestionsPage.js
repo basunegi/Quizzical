@@ -19,14 +19,20 @@ export default function QuestionsPage(props) {
 	React.useEffect(() => {
 		fetch(url[props.category])
 		.then(res => res.json())
-		.then(data => setQuestions(data.results.map(item => {
-			return {
-				...item,
-				"qid": nanoid(),
-				"isAttempted": false,
-				"isCorrect": false
+		.then(data => {
+			if(data.results){	
+				setQuestions(data.results.map(item => {
+					return {
+						...item,
+						"qid": nanoid(),
+						"isAttempted": false,
+						"isCorrect": false
+					}
+				}))
+			}else{
+				console.log(">>>>>>>>>>>")
 			}
-		})))
+		})
 	 }, [])
 
 	const questionElements = questions.map(question => {
